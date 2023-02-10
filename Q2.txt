@@ -1,0 +1,44 @@
+Vector and ArrayList are both data structures used to store collections of elements. However, there are several differences between them:
+
+1 - Syntax: Vector is a part of the Java Collections Framework and is defined in the java.util package, while ArrayList is also a part of the Java Collections Framework and is defined in the java.util package.
+
+2 - Thread Safety: Vector is synchronized, meaning that multiple threads can access it safely, whereas ArrayList is not synchronized, meaning that only one thread can access it at a time. This means that if you need to access a collection from multiple threads, you should use a Vector.
+
+3 - Performance: ArrayList is faster than Vector because ArrayList is not synchronized, whereas Vector is slower due to its synchronization overhead.
+
+4 - Resizing: Both Vector and ArrayList can grow dynamically as elements are added, but Vector grows its size by doubling its current size, while ArrayList grows its size by 50% of its current size.
+
+5 - Timeline: Vector was introduced in the first version of Java and was part of the original java.util package. ArrayList was introduced in Java 2 and is a more recent addition to the Java Collections Framework.
+
+In general, if you don't need synchronization and need a fast collection, you should use ArrayList, while if you need synchronization, you should use Vector.
+
+
+
+There are two ways to create a Synchronized ArrayList. 
+
+1. Collections.synchronizedList() method. 
+
+List<String> list =
+           Collections.synchronizedList(new ArrayList<String>());
+
+synchronized(list)
+        {
+            // must be in synchronized block
+            Iterator it = list.iterator();
+ 
+            while (it.hasNext())
+                System.out.println(it.next());
+        }
+
+2. Using CopyOnWriteArrayList.
+
+CopyOnWriteArrayList<String> threadSafeList
+            = new CopyOnWriteArrayList<String>();
+// Iterating on the synchronized ArrayList using iterator.
+       Iterator<String> it = threadSafeList.iterator();
+
+
+
+
+
+
